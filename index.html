@@ -24,7 +24,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:70px;-webkit-text-size-adjust:100%}
 body{background:var(--bg);color:var(--text);font-family:'Space Grotesk',system-ui,-apple-system,sans-serif;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-img{display:block;max-width:100%}
+img{display:block;max-width:100%;height:auto}
 a{color:inherit;text-decoration:none}
 .wrap{max-width:1200px;margin:0 auto;padding:0 var(--pad)}
 section{padding:clamp(64px,10vw,120px) 0;position:relative}
@@ -103,7 +103,7 @@ nav.open .burger i:nth-child(2){top:20px;transform:rotate(-45deg)}
 .sou small{color:var(--lime);font-weight:700;letter-spacing:.14em;font-size:.7rem;text-transform:uppercase}
 .sou h3{font-size:1.25rem;text-transform:uppercase;margin:4px 0 6px}
 .sou p{font-size:.92rem;color:var(--muted);margin:0}
-@media (max-width:860px){.about-grid{grid-template-columns:1fr}.about-photo{max-width:480px}}
+@media (max-width:860px){.about-grid{grid-template-columns:1fr}.about-photo{max-width:none}.about-photo img{aspect-ratio:16/11;object-position:50% 22%}}
 @media (max-width:480px){.sou{grid-template-columns:1fr}.sou img{height:180px}}
 
 /* music */
@@ -134,7 +134,8 @@ nav.open .burger i:nth-child(2){top:20px;transform:rotate(-45deg)}
 #press{background:var(--bg2)}
 .press{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
 .pcard{position:relative;overflow:hidden;aspect-ratio:3/4;display:flex;align-items:flex-end;background:var(--panel)}
-.pcard img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.pcard img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%;transition:transform .8s}
+@media (max-width:640px){.pcard{aspect-ratio:4/3}}
 .pcard:hover img{transform:scale(1.07)}
 .pcard::before{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(20,14,34,.95),rgba(20,14,34,.1) 65%);z-index:1}
 .pcard div{position:relative;z-index:2;padding:22px;border-left:5px solid var(--pink);margin:0 0 22px;width:100%}
