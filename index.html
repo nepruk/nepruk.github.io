@@ -9,7 +9,7 @@
 <meta property="og:title" content="NepruK — Live Electronic Artist">
 <meta property="og:description" content="Live electronic music blending bass guitar, bowed textures and ethnic influences.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://nepruk.github.io/assets/jump.jpg">
+<meta property="og:image" content="https://nepruk.github.io/assets/photo-jump.jpg">
 <meta property="og:url" content="https://nepruk.github.io/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23141418'/%3E%3Ccircle cx='32' cy='32' r='22' fill='none' stroke='%23e01e96' stroke-width='6'/%3E%3Ccircle cx='32' cy='32' r='8' fill='%23d4ff4a'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -109,7 +109,9 @@ nav.open .burger i:nth-child(2){top:20px;transform:rotate(-45deg)}
 /* music */
 #music{background:var(--bg2)}
 .tracks{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
-.track{background:var(--panel);border-left:5px solid var(--pink);padding:26px 24px 22px;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s;display:flex;flex-direction:column;min-height:200px}
+.track{background:var(--panel);border-left:5px solid var(--pink);padding:26px 24px 22px;position:relative;overflow:hidden;isolation:isolate;transition:transform .3s,box-shadow .3s;display:flex;flex-direction:column;min-height:280px}
+.track::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(20,14,34,.94) 8%,rgba(20,14,34,.25) 70%),var(--cover) center/cover;transition:transform .8s}
+.track:hover::before{transform:scale(1.07)}
 .track:hover{transform:translateY(-6px);box-shadow:0 10px 36px rgba(224,30,150,.35)}
 .track .n{position:absolute;right:14px;top:-6px;font-size:5.5rem;font-weight:700;color:rgba(255,255,255,.05);line-height:1}
 .track h3{font-size:clamp(1.2rem,3vw,1.5rem);margin-top:auto;position:relative}
@@ -207,7 +209,7 @@ footer b{color:var(--lime)}
       </div>
     </div>
     <div class="photo">
-      <img src="assets/jump.jpg" alt="NepruK jumping with a bass guitar in a neon lime jumpsuit" width="1280" height="1485" fetchpriority="high">
+      <img src="assets/photo-jump.jpg" alt="NepruK jumping with a bass guitar in a neon lime jumpsuit" width="1280" height="1485" fetchpriority="high">
       <div class="rings"><i></i><i></i><i></i></div>
     </div>
   </div>
@@ -223,7 +225,7 @@ footer b{color:var(--lime)}
 <section id="about">
   <div class="wrap about-grid">
     <div class="about-photo rv">
-      <img src="assets/tashkent.jpg" alt="NepruK in an ikat outfit among Tashkent apartment blocks" loading="lazy" width="1280" height="1240">
+      <img src="assets/photo-tashkent.jpg" alt="NepruK in an ikat outfit among Tashkent apartment blocks" loading="lazy" width="1280" height="1240">
     </div>
     <div class="about-text">
       <div class="label rv">About</div>
@@ -232,7 +234,7 @@ footer b{color:var(--lime)}
       <p class="rv">Her live sets combine cinematic electronic sound, improvisation and energetic bass-driven performance, creating a distinctive audiovisual experience shaped by contemporary electronic music and regional influences.</p>
       <p class="rv">Her work explores the intersection of contemporary electronic music, live bass performance and regional cultural influences from Central Asia.</p>
       <div class="sou rv">
-        <img src="assets/sunset.jpg" alt="NepruK in a flowing red ikat robe at sunset" loading="lazy" width="1280" height="1280">
+        <img src="assets/photo-sunset.jpg" alt="NepruK in a flowing red ikat robe at sunset" loading="lazy" width="1280" height="1280">
         <div>
           <small>Audiovisual project</small>
           <h3>Sounds of Uzbekistan</h3>
@@ -248,10 +250,10 @@ footer b{color:var(--lime)}
     <div class="label rv">Music</div>
     <h2 class="rv">Press <span>play</span></h2>
     <div class="tracks">
-      <a class="track rv" href="https://band.link/syTeT" target="_blank" rel="noopener"><span class="n">01</span><div class="eq"><i></i><i></i><i></i><i></i><i></i></div><h3>Techno Mahalla</h3><div class="play"><b>▶</b>LISTEN</div></a>
-      <a class="track rv" href="https://go.protonradio.com/r/rl3PMkz3DgzDI" target="_blank" rel="noopener"><span class="n">02</span><div class="eq"><i></i><i></i><i></i><i></i><i></i></div><h3>Call of the Universe</h3><div class="play"><b>▶</b>LISTEN</div></a>
-      <a class="track rv" href="https://band.link/smyN0" target="_blank" rel="noopener"><span class="n">03</span><div class="eq"><i></i><i></i><i></i><i></i><i></i></div><h3>Tashkent Vibe</h3><div class="play"><b>▶</b>LISTEN</div></a>
-      <a class="track rv" href="https://go.protonradio.com/r/rlcgv8zHjEOsQ" target="_blank" rel="noopener"><span class="n">04</span><div class="eq"><i></i><i></i><i></i><i></i><i></i></div><h3>Kari-Navo</h3><div class="play"><b>▶</b>LISTEN</div></a>
+      <a class="track rv" style="--cover:url(assets/cover-techno-mahalla.jpg)" href="https://band.link/syTeT" target="_blank" rel="noopener"><span class="n">01</span><div class="eq"><i></i><i></i><i></i><i></i><i></i></div><h3>Techno Mahalla</h3><div class="play"><b>▶</b>LISTEN</div></a>
+      <a class="track rv" style="--cover:url(assets/cover-call-of-the-universe.jpg)" href="https://go.protonradio.com/r/rl3PMkz3DgzDI" target="_blank" rel="noopener"><span class="n">02</span><div class="eq"><i></i><i></i><i></i><i></i><i></i></div><h3>Call of the Universe</h3><div class="play"><b>▶</b>LISTEN</div></a>
+      <a class="track rv" style="--cover:url(assets/cover-tashkent-vibe.jpg)" href="https://band.link/smyN0" target="_blank" rel="noopener"><span class="n">03</span><div class="eq"><i></i><i></i><i></i><i></i><i></i></div><h3>Tashkent Vibe</h3><div class="play"><b>▶</b>LISTEN</div></a>
+      <a class="track rv" style="--cover:url(assets/cover-kari-navo.jpg)" href="https://go.protonradio.com/r/rlcgv8zHjEOsQ" target="_blank" rel="noopener"><span class="n">04</span><div class="eq"><i></i><i></i><i></i><i></i><i></i></div><h3>Kari-Navo</h3><div class="play"><b>▶</b>LISTEN</div></a>
     </div>
   </div>
 </section>
@@ -277,15 +279,15 @@ footer b{color:var(--lime)}
     <h2 class="rv">In the <span>spotlight</span></h2>
     <div class="press">
       <a class="pcard rv" href="https://www.sadowskybass.com/artists/detail/katerina-nepruk" target="_blank" rel="noopener">
-        <img src="assets/black-suit.jpg" alt="NepruK with a Sadowsky bass" loading="lazy" width="1280" height="1923">
+        <img src="assets/photo-black-suit.jpg" alt="NepruK with a Sadowsky bass" loading="lazy" width="1280" height="1923">
         <div><small>Official Artist Profile</small><h3>Sadowsky Basses</h3><span>Visit profile ↗</span></div>
       </a>
       <a class="pcard rv" href="https://angrytrobairitz.substack.com/p/the-angry-trobairitz-w-katerina-nepruk" target="_blank" rel="noopener">
-        <img src="assets/tashkent.jpg" alt="NepruK portrait in Tashkent" loading="lazy" width="1280" height="1240" style="object-position:40% 20%">
+        <img src="assets/photo-tashkent.jpg" alt="NepruK portrait in Tashkent" loading="lazy" width="1280" height="1240" style="object-position:40% 20%">
         <div><small>Interview</small><h3>The Angry Trobairitz</h3><span>Read interview ↗</span></div>
       </a>
       <a class="pcard rv" href="https://www.drstrings.com/product-page/katrina-nepruk" target="_blank" rel="noopener">
-        <img src="assets/sunset.jpg" alt="NepruK in a flowing red robe at sunset" loading="lazy" width="1280" height="1280">
+        <img src="assets/photo-sunset.jpg" alt="NepruK in a flowing red robe at sunset" loading="lazy" width="1280" height="1280">
         <div><small>Official Artist Profile</small><h3>DR Strings</h3><span>Visit profile ↗</span></div>
       </a>
     </div>
