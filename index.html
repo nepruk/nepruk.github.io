@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NepruK — Live Electronic Artist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#141418; --panel:#261a3a; --pink:#e01e96; --lime:#d4ff4a; --text:#f6f5fb; --muted:#a9a6b8;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Space Grotesk',system-ui,sans-serif;line-height:1.6;overflow-x:hidden}
+a{color:var(--lime);text-decoration:none}
+.topbar{height:12px;background:var(--pink);box-shadow:0 0 24px var(--pink)}
+nav{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:14px 5vw;background:rgba(20,20,24,.85);backdrop-filter:blur(8px);border-bottom:1px solid #22222a}
+nav b{color:var(--lime);letter-spacing:.12em;font-size:.8rem}
+nav div a{margin-left:22px;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);transition:color .2s,text-shadow .2s}
+nav div a:hover{color:var(--lime);text-shadow:0 0 12px var(--lime)}
+section{padding:90px 5vw;max-width:1200px;margin:auto}
+.label{color:var(--lime);font-weight:700;letter-spacing:.14em;font-size:.8rem;text-transform:uppercase;margin-bottom:18px}
+h2{font-size:clamp(1.8rem,4vw,3rem);margin-bottom:28px;text-transform:uppercase}
+h2 span{color:var(--pink)}
+
+/* hero */
+.hero{position:relative;background:var(--panel);border-left:10px solid var(--pink);margin:50px auto 0;padding:clamp(30px,6vw,70px);min-height:520px;overflow:hidden;max-width:1200px;width:90vw}
+.hero h1{font-size:clamp(3.5rem,12vw,8.5rem);line-height:1;font-weight:700;letter-spacing:.02em;position:relative;z-index:2;animation:glow 4s ease-in-out infinite}
+@keyframes glow{50%{text-shadow:0 0 30px rgba(224,30,150,.55)}}
+.hero .sub{color:var(--lime);font-weight:700;font-size:clamp(1rem,2.4vw,1.5rem);letter-spacing:.06em;margin-top:18px;position:relative;z-index:2}
+.hero .from{font-weight:700;letter-spacing:.06em;margin-top:12px;position:relative;z-index:2}
+.bar{height:14px;background:var(--lime);width:0;margin-top:70px;box-shadow:0 0 22px rgba(212,255,74,.6);animation:grow 1.4s .4s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes grow{to{width:min(45%,380px)}}
+.rings{position:absolute;right:-60px;top:50%;width:min(52vw,440px);aspect-ratio:1;transform:translateY(-35%);z-index:1}
+.rings i{position:absolute;inset:0;border:4px solid var(--pink);border-radius:50%;box-shadow:0 0 18px rgba(224,30,150,.6),inset 0 0 18px rgba(224,30,150,.35);animation:pulse 4.5s ease-in-out infinite}
+.rings i:nth-child(2){inset:17%;animation-delay:.5s}
+.rings i:nth-child(3){inset:34%;animation-delay:1s}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.07);opacity:.65}}
+.intro{padding:40px 5vw 0;max-width:1200px;margin:auto;font-size:1.15rem}
+.rule{height:2px;background:var(--pink);margin:50px 5vw 16px;max-width:1200px}
+.tags{padding:0 5vw;max-width:1200px;margin:auto;color:var(--lime);font-weight:700;letter-spacing:.08em;font-size:.9rem}
+.tags em{font-style:normal;color:var(--muted);margin:0 12px}
+
+/* cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.card{background:var(--panel);border-left:5px solid var(--pink);padding:24px;transition:transform .25s,box-shadow .25s;display:block;color:var(--text)}
+.card:hover{transform:translateY(-6px);box-shadow:0 8px 30px rgba(224,30,150,.35)}
+.card small{color:var(--lime);letter-spacing:.12em;font-weight:700;font-size:.7rem;text-transform:uppercase}
+.card h3{font-size:1.2rem;margin:6px 0}
+.card p{color:var(--muted);font-size:.92rem}
+.track .play{display:inline-block;margin-top:12px;color:var(--lime);font-weight:700;font-size:.8rem;letter-spacing:.1em}
+.card:hover .play{text-shadow:0 0 12px var(--lime)}
+ul.hl{list-style:none;display:grid;gap:12px}
+ul.hl li{padding-left:28px;position:relative}
+ul.hl li::before{content:"";position:absolute;left:0;top:.65em;width:14px;height:4px;background:var(--lime);box-shadow:0 0 8px var(--lime)}
+.big{font-size:clamp(1.3rem,3vw,2rem);word-break:break-all}
+footer{padding:30px 5vw;border-top:1px solid #22222a;display:flex;justify-content:space-between;color:var(--muted);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s}
+.rv.on{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.bar{width:min(45%,380px)}}
+@media (max-width:640px){nav div a{margin-left:12px}.rings{opacity:.35}}
+</style>
+</head>
+<body>
+<div class="topbar"></div>
+<nav><b>NEPRUK</b><div><a href="#music">Music</a><a href="#about">About</a><a href="#booking">Booking</a><a href="#contact">Contact</a></div></nav>
+
+<header class="hero">
+  <h1>NEPRUK</h1>
+  <div class="sub">LIVE ELECTRONIC ARTIST</div>
+  <div class="from">FROM CENTRAL ASIA</div>
+  <div class="bar"></div>
+  <div class="rings"><i></i><i></i><i></i></div>
+</header>
+<p class="intro rv">Bass guitar. Electronics. Improvisation.<br>A distinctive audiovisual experience shaped by contemporary electronic music and regional influences.</p>
+<div class="rule"></div>
+<div class="tags">ELECTRONIC<em>/</em>ETHNO<em>/</em>BASS-DRIVEN LIVE</div>
+
+<section id="music">
+  <div class="label rv">Music</div>
+  <h2 class="rv">Listen <span>now</span></h2>
+  <div class="grid">
+    <a class="card track rv" href="https://band.link/syTeT"><small>Track</small><h3>Techno Mahalla</h3><span class="play">▶ PLAY</span></a>
+    <a class="card track rv" href="https://go.protonradio.com/" ><small>Track</small><h3>Call of the Universe</h3><span class="play">▶ PLAY</span></a>
+    <a class="card track rv" href="https://band.link/smyN0"><small>Track</small><h3>Tashkent Vibe</h3><span class="play">▶ PLAY</span></a>
+    <a class="card track rv" href="https://go.protonradio.com/"><small>Track</small><h3>Kari-Navo</h3><span class="play">▶ PLAY</span></a>
+  </div>
+</section>
+
+<section id="about">
+  <div class="label rv">About</div>
+  <h2 class="rv">Sounds of <span>Uzbekistan</span></h2>
+  <p class="rv" style="max-width:720px;margin-bottom:34px">Solo live sets blending bass guitar, bowed textures, electronics, visuals and ethnic influences. Real sounds, locations and stories from Uzbekistan turned into electronic compositions and live audiovisual shows.</p>
+  <ul class="hl rv">
+    <li>Creator and composer of the “Sounds of Uzbekistan” audiovisual project</li>
+    <li>Co-founder of the “NeoForMusic” label</li>
+    <li>Sadowsky artist and ambassador</li>
+    <li>DR Strings artist and ambassador</li>
+    <li>Rootz artist and ambassador</li>
+    <li>Semi-finalist of Uzbekistan Got Talent</li>
+  </ul>
+  <div class="grid" style="margin-top:44px">
+    <a class="card rv" href="https://sadowskybass.com/artists/detail/katerina-nepruk"><small>Official Artist Profile</small><h3>Sadowsky Basses</h3></a>
+    <a class="card rv" href="https://angrytrobairitz.substack.com/p/the-angry-trobairitz-w-katerina-nepruk"><small>Interview</small><h3>The Angry Trobairitz</h3></a>
+    <a class="card rv" href="https://drstrings.com/product-page/katrina-nepruk"><small>Official Artist Profile</small><h3>DR Strings</h3></a>
+  </div>
+</section>
+
+<section id="booking">
+  <div class="label rv">Booking &amp; Live Shows</div>
+  <h2 class="rv">Book <span>2027</span></h2>
+  <div class="grid">
+    <div class="card rv"><small>Format</small><h3>Solo live act</h3><p>With optional visuals.</p></div>
+    <div class="card rv"><small>Set length</small><h3>20–30 / 45–60 min</h3></div>
+    <div class="card rv"><small>Tech</small><h3>Own instruments &amp; electronics</h3><p>Venue provides sound and lighting.</p></div>
+    <div class="card rv"><small>For</small><h3>Festivals, clubs, culture</h3><p>Cultural events and special projects.</p></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="label rv">Contact</div>
+  <p class="big rv"><a href="mailto:nepruk.booking@gmail.com">nepruk.booking@gmail.com</a></p>
+  <p class="rv" style="margin-top:18px"><a href="https://instagram.com/katerina_nepruk">INSTAGRAM</a> &nbsp;/&nbsp; <a href="https://youtube.com/@katerina_nepruk">YOUTUBE</a></p>
+</section>
+
+<footer><span>NepruK / Live Electronic Artist</span><span style="color:var(--lime)">2027</span></footer>
+
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%4)*80+'ms';io.observe(el)});
+</script>
+</body>
+</html>
