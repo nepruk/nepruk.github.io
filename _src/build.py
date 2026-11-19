@@ -142,7 +142,7 @@ def jsonld(lang):
          "url": SITE + "/", "image": img, "description": v["ld_desc"],
          "genre": ["Electronic", "Ethno", "Downtempo", "Electronica"],
          "sameAs": SOCIAL,
-         "contactPoint": {"@type": "ContactPoint", "contactType": "booking", "email": "nepruk.booking@gmail.com",
+         "contactPoint": {"@type": "ContactPoint", "contactType": "booking", "email": "booking@nepruk.com",
                           "availableLanguage": ["English", "Spanish", "Russian"]},
          "album": [{"@type": "MusicAlbum", "name": "Sounds of Uzbekistan: Margilan - EP",
                     "url": "https://music.apple.com/us/album/sounds-of-uzbekistan-margilan-ep/1884335824",
