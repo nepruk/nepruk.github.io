@@ -38,7 +38,7 @@ h2 span{color:var(--pink);text-shadow:0 0 28px rgba(224,30,150,.45)}
 nav{position:sticky;top:0;z-index:50;background:rgba(20,20,24,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid #24242c}
 nav .wrap{display:flex;justify-content:space-between;align-items:center;height:60px}
 .logo{font-weight:700;letter-spacing:.18em;color:var(--lime);font-size:.9rem}
-.links{display:flex;gap:28px}
+.links{display:flex;gap:28px;margin-left:auto}
 .links a{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);transition:color .2s,text-shadow .2s}
 .links a:hover{color:var(--lime);text-shadow:0 0 12px var(--lime)}
 .burger{display:none;background:none;border:0;width:44px;height:44px;cursor:pointer;position:relative;margin-right:-10px}
@@ -49,9 +49,19 @@ nav.open .burger i:nth-child(2){top:20px;transform:rotate(-45deg)}
 @media (max-width:760px){
   .burger{display:block}
   .links{position:absolute;top:60px;left:0;right:0;flex-direction:column;gap:0;background:#141418;border-bottom:2px solid var(--pink);max-height:0;overflow:hidden;transition:max-height .4s}
-  nav.open .links{max-height:320px}
+  nav.open .links{max-height:420px}
   .links a{padding:18px var(--pad);border-top:1px solid #24242c;font-size:.9rem}
 }
+
+/* language switch */
+.navr{display:flex;align-items:center;gap:6px;margin-left:28px}
+.lang{display:flex;align-items:center}
+.lang button{background:none;border:0;cursor:pointer;font:inherit;font-weight:700;font-size:.78rem;letter-spacing:.14em;color:var(--muted);padding:12px 8px;min-height:44px;transition:color .2s,text-shadow .2s}
+.lang button:hover{color:var(--text)}
+.lang button[aria-pressed="true"]{color:var(--lime);text-shadow:0 0 12px rgba(212,255,74,.55)}
+.lang i{width:1px;height:14px;background:#3a3a46}
+.lang button:focus-visible{outline:2px solid var(--lime);outline-offset:-2px}
+@media (max-width:760px){.navr{margin-left:auto}.lang button{padding:12px 7px}}
 
 /* hero */
 .hero{padding:clamp(24px,5vw,60px) 0 clamp(48px,8vw,90px);overflow:hidden}
@@ -78,6 +88,8 @@ nav.open .burger i:nth-child(2){top:20px;transform:rotate(-45deg)}
 .rings i:nth-child(2){inset:17%;animation-delay:.5s}.rings i:nth-child(3){inset:34%;animation-delay:1s}
 @keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.08);opacity:.55}}
 @media (max-width:600px){
+  .cta{gap:10px}
+  .cta .btn{padding:14px 16px;letter-spacing:.08em;font-size:.74rem}
   .hero{
     padding:0;position:relative;display:flex;
     min-height:max(580px,min(900px,calc(100svh - 64px)));
@@ -162,7 +174,6 @@ nav.open .burger i:nth-child(2){top:20px;transform:rotate(-45deg)}
 .sou2-photo::before{content:"";position:absolute;inset:14px -12px -14px 12px;border:3px solid var(--lime);z-index:-1;box-shadow:0 0 22px rgba(212,255,74,.35)}
 .sou2-photo img{width:100%;aspect-ratio:5/4;object-fit:cover;object-position:28% 30%}
 .sou2-text p{color:#dcd9ea;font-size:clamp(1rem,2.4vw,1.15rem);max-width:520px}
-.plinks{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
 @media (max-width:860px){.sou2{grid-template-columns:minmax(0,1fr)}.sou2-photo{margin:0 12px 14px 0}}
 
 /* music */
@@ -184,6 +195,25 @@ nav.open .burger i:nth-child(2){top:20px;transform:rotate(-45deg)}
 @keyframes eq{0%,100%{height:25%}50%{height:100%}}
 @media (hover:none){.eq i{animation:eq 1.1s ease-in-out infinite}}
 
+/* streaming platforms */
+.platforms{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:clamp(28px,4vw,44px)}
+.plabel{color:var(--muted);font-weight:700;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;margin-right:6px}
+.btn.sm{padding:11px 18px;font-size:.74rem;min-height:44px}
+.plinks{display:flex;flex-direction:column;align-items:flex-start;gap:22px;margin-top:28px}
+.pgroup{display:flex;flex-direction:column;gap:10px;width:100%;max-width:420px}
+.pgroup .plabel{margin:0}
+.prow{display:flex;gap:10px}
+.prow .btn{flex:1 1 0;justify-content:center;min-width:0;white-space:nowrap}
+.tlink{color:var(--lime);font-weight:700;letter-spacing:.12em;font-size:.78rem;text-transform:uppercase;border-bottom:2px solid var(--pink);padding-bottom:3px;transition:color .2s,border-color .2s}
+.tlink:hover{color:#fff;border-color:var(--lime)}
+@media (max-width:600px){
+  .platforms{gap:10px}
+  .platforms .plabel{flex:0 0 100%;margin:0}
+  .platforms .btn{flex:1 1 0;min-width:0;justify-content:center;padding:12px 6px;font-size:.7rem;letter-spacing:.06em;white-space:nowrap}
+  .plinks .btn.fill{width:100%;justify-content:center}
+  .pgroup{max-width:none}
+}
+
 /* highlights */
 .hl{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
 .hl div{padding:22px 22px 22px 70px;position:relative;border:1px solid #2b2b36;background:linear-gradient(135deg,var(--panel2),transparent);transition:.3s}
@@ -204,6 +234,13 @@ nav.open .burger i:nth-child(2){top:20px;transform:rotate(-45deg)}
 .pcard h3{font-size:1.35rem;text-transform:uppercase;line-height:1.15;margin:4px 0}
 .pcard span{color:var(--text);font-size:.9rem;opacity:.85;transition:.3s}
 .pcard:hover span{color:var(--lime);opacity:1}
+
+/* partner logos on press cards */
+.pcard .plogo{position:absolute;top:16px;left:16px;z-index:3;opacity:1;display:flex;align-items:center;padding:10px 14px;background:rgba(20,14,34,.62);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.16)}
+.pcard .plogo.r{left:auto;right:16px}
+.pcard .plogo img{position:static;inset:auto;width:auto;height:32px;max-width:none;object-fit:contain;transition:none}
+.pcard .plogo img.dr{height:30px;filter:brightness(0) invert(1)}
+.pcard:hover .plogo img{transform:none}
 
 /* booking */
 .book{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,6vw,72px);align-items:start}
@@ -246,9 +283,14 @@ footer b{color:var(--lime)}
 <nav id="nav">
   <div class="wrap">
     <a class="logo" href="#top">NEPRUK</a>
-    <button class="burger" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
     <div class="links">
-      <a href="#about">About</a><a href="#projects">Projects</a><a href="#music">Music</a><a href="#press">Press</a><a href="#booking">Booking</a><a href="#contact">Contact</a>
+      <a href="#about" data-es="Acerca de">About</a><a href="#music" data-es="Música">Music</a><a href="#projects" data-es="Proyectos">Projects</a><a href="#press" data-es="Prensa">Press</a><a href="#booking" data-es="Contratación">Booking</a><a href="#contact" data-es="Contacto">Contact</a>
+    </div>
+    <div class="navr">
+      <div class="lang" role="group" aria-label="Language" data-es-aria-label="Idioma">
+        <button type="button" data-lang="en" aria-pressed="true">EN</button><i aria-hidden="true"></i><button type="button" data-lang="es" aria-pressed="false">ES</button>
+      </div>
+      <button class="burger" aria-label="Menu" data-es-aria-label="Menú" aria-expanded="false"><i></i><i></i></button>
     </div>
   </div>
 </nav>
@@ -256,25 +298,25 @@ footer b{color:var(--lime)}
 <header class="hero" id="top">
   <div class="wrap hero-grid">
     <div class="panel">
-      <div class="kick">ARTIST PROFILE</div>
+      <div class="kick" data-es="PERFIL DE ARTISTA">ARTIST PROFILE</div>
       <h1>NEPRUK</h1>
-      <div class="sub">Live electronic artist</div>
-      <div class="from">From Central Asia</div>
-      <p class="lead">Live electronic music blending bass guitar, bowed textures and ethnic influences.</p>
+      <div class="sub" data-es="Artista electrónica en vivo">Live electronic artist</div>
+      <div class="from" data-es="De Asia Central">From Central Asia</div>
+      <p class="lead" data-es="Música electrónica en vivo que fusiona bajo eléctrico, texturas de arco e influencias étnicas.">Live electronic music blending bass guitar, bowed textures and ethnic influences.</p>
       <div class="bar"></div>
       <div class="cta">
-        <a class="btn fill" href="#music">▶ Listen</a>
-        <a class="btn" href="#booking">Book 2027</a>
+        <a class="btn fill" href="#music" data-es="▶ Escuchar">▶ Listen</a>
+        <a class="btn" href="#booking" data-es="Contratación 2027">Book 2027</a>
       </div>
     </div>
     <div class="photo">
-      <img src="assets/hero-bow-bass.jpg" alt="NepruK sitting on the floor playing a bass guitar with a bow, surrounded by electronics" width="1365" height="2048" fetchpriority="high" style="object-position:50% 62%">
+      <img src="assets/hero-bow-bass.jpg" alt="NepruK sitting on the floor playing a bass guitar with a bow, surrounded by electronics" data-es-alt="NepruK sentada en el suelo tocando el bajo con arco, rodeada de equipos electrónicos" width="1365" height="2048" fetchpriority="high" style="object-position:50% 62%">
       <div class="rings"><i></i><i></i><i></i></div>
     </div>
   </div>
 </header>
 
-<div class="ticker" aria-hidden="true"><div>
+<div class="ticker" aria-hidden="true"><div data-es="ELECTRÓNICA<span>/</span>ÉTNICA<span>/</span>BAJO EN VIVO<span>/</span>BAJO ELÉCTRICO<span>/</span>EQUIPOS ELECTRÓNICOS<span>/</span>IMPROVISACIÓN<span>/</span>ELECTRÓNICA<span>/</span>ÉTNICA<span>/</span>BAJO EN VIVO<span>/</span>BAJO ELÉCTRICO<span>/</span>EQUIPOS ELECTRÓNICOS<span>/</span>IMPROVISACIÓN<span>/</span>ELECTRÓNICA<span>/</span>ÉTNICA<span>/</span>BAJO EN VIVO<span>/</span>BAJO ELÉCTRICO<span>/</span>EQUIPOS ELECTRÓNICOS<span>/</span>IMPROVISACIÓN<span>/</span>ELECTRÓNICA<span>/</span>ÉTNICA<span>/</span>BAJO EN VIVO<span>/</span>BAJO ELÉCTRICO<span>/</span>EQUIPOS ELECTRÓNICOS<span>/</span>IMPROVISACIÓN<span>/</span>">
   ELECTRONIC<span>/</span>ETHNO<span>/</span>BASS-DRIVEN LIVE<span>/</span>BASS GUITAR<span>/</span>ELECTRONICS<span>/</span>IMPROVISATION<span>/</span>
   ELECTRONIC<span>/</span>ETHNO<span>/</span>BASS-DRIVEN LIVE<span>/</span>BASS GUITAR<span>/</span>ELECTRONICS<span>/</span>IMPROVISATION<span>/</span>
   ELECTRONIC<span>/</span>ETHNO<span>/</span>BASS-DRIVEN LIVE<span>/</span>BASS GUITAR<span>/</span>ELECTRONICS<span>/</span>IMPROVISATION<span>/</span>
@@ -284,26 +326,26 @@ footer b{color:var(--lime)}
 <section id="about">
   <div class="wrap about-grid">
     <div class="about-photo rv">
-      <img src="assets/photo-tashkent.jpg" alt="NepruK in an ikat outfit among Tashkent apartment blocks" loading="lazy" width="1280" height="1240">
+      <img src="assets/photo-tashkent.jpg" alt="NepruK in an ikat outfit among Tashkent apartment blocks" data-es-alt="NepruK con un atuendo de ikat entre edificios de Tashkent" loading="lazy" width="1280" height="1240">
     </div>
     <div class="about-text">
-      <div class="label rv">About</div>
-      <h2 class="rv">Bass. Bow. <span>Beats.</span></h2>
-      <p class="rv">NepruK is a live electronic artist from Central Asia blending bass guitar, electronics and visual performance.</p>
-      <p class="rv">Her live sets combine cinematic electronic sound, improvisation and energetic bass-driven performance, creating a distinctive audiovisual experience shaped by contemporary electronic music and regional influences.</p>
-      <p class="rv">Her work explores the intersection of contemporary electronic music, live bass performance and regional cultural influences from Central Asia.</p>
+      <div class="label rv" data-es="Acerca de">About</div>
+      <h2 class="rv" data-es="Bajo. Arco. <span>Ritmo.</span>">Bass. Bow. <span>Beats.</span></h2>
+      <p class="rv" data-es="NepruK es una artista electrónica en vivo de Asia Central que fusiona bajo eléctrico, electrónica y performance visual.">NepruK is a live electronic artist from Central Asia blending bass guitar, electronics and visual performance.</p>
+      <p class="rv" data-es="Sus directos combinan sonido electrónico cinematográfico, improvisación y una enérgica interpretación centrada en el bajo, creando una experiencia audiovisual distintiva, moldeada por la música electrónica contemporánea y las influencias regionales.">Her live sets combine cinematic electronic sound, improvisation and energetic bass-driven performance, creating a distinctive audiovisual experience shaped by contemporary electronic music and regional influences.</p>
+      <p class="rv" data-es="Su trabajo explora la intersección entre la música electrónica contemporánea, la interpretación de bajo en vivo y las influencias culturales regionales de Asia Central.">Her work explores the intersection of contemporary electronic music, live bass performance and regional cultural influences from Central Asia.</p>
     </div>
   </div>
   <div class="wrap vids">
-    <div class="label rv">Watch</div>
+    <div class="label rv" data-es="Ver">Watch</div>
     <div class="vgrid">
       <figure class="vcard rv">
-        <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/F-hxGxnut90?rel=0" title="NepruK — Performance on the rocks, Antalya" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
-        <figcaption><b>Performance on the rocks</b>Antalya, Türkiye · Lunar Eclipse, Space of Bass</figcaption>
+        <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/F-hxGxnut90?rel=0" title="NepruK — Performance on the rocks, Antalya" data-es-title="NepruK — Performance sobre las rocas, Antalya" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+        <figcaption data-es="<b>Performance sobre las rocas</b>Antalya, Türkiye · Lunar Eclipse, Space of Bass"><b>Performance on the rocks</b>Antalya, Türkiye · Lunar Eclipse, Space of Bass</figcaption>
       </figure>
       <figure class="vcard rv">
-        <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/Ea3qiDMkYgs?rel=0" title="NepruK — Tashkent Vibe (Official Music Video)" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
-        <figcaption><b>Tashkent Vibe</b>Official Music Video</figcaption>
+        <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/Ea3qiDMkYgs?rel=0" title="NepruK — Tashkent Vibe (Official Music Video)" data-es-title="NepruK — Tashkent Vibe (videoclip oficial)" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+        <figcaption data-es="<b>Tashkent Vibe</b>Videoclip oficial"><b>Tashkent Vibe</b>Official Music Video</figcaption>
       </figure>
       <figure class="vcard rv">
         <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/Oz_wcnu2YO0?rel=0" title="NepruK — Call of the Universe" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
@@ -313,24 +355,50 @@ footer b{color:var(--lime)}
   </div>
 </section>
 
+<section id="music">
+  <div class="wrap">
+    <div class="label rv" data-es="Música">Music</div>
+    <h2 class="rv" data-es="Dale al <span>play</span>">Press <span>play</span></h2>
+    <div class="tracks">
+      <a class="track rv" style="--cover:url(assets/cover-techno-mahalla.jpg);--pos:50% 35%" href="https://band.link/syTeT" target="_blank" rel="noopener"><span class="n">01</span><div class="eq"><i></i><i></i><i></i><i></i><i></i></div><h3>Techno Mahalla</h3><div class="play" data-es="<b>▶</b>ESCUCHAR"><b>▶</b>LISTEN</div></a>
+      <a class="track rv" style="--cover:url(assets/cover-call-of-the-universe.jpg);--pos:50% 40%" href="https://go.protonradio.com/r/rl3PMkz3DgzDI" target="_blank" rel="noopener"><span class="n">02</span><div class="eq"><i></i><i></i><i></i><i></i><i></i></div><h3>Call of the Universe</h3><div class="play" data-es="<b>▶</b>ESCUCHAR"><b>▶</b>LISTEN</div></a>
+      <a class="track rv" style="--cover:url(assets/cover-tashkent-vibe.jpg);--pos:50% 8%" href="https://band.link/smyN0" target="_blank" rel="noopener"><span class="n">03</span><div class="eq"><i></i><i></i><i></i><i></i><i></i></div><h3>Tashkent Vibe</h3><div class="play" data-es="<b>▶</b>ESCUCHAR"><b>▶</b>LISTEN</div></a>
+      <a class="track rv" style="--cover:url(assets/cover-kari-navo.jpg);--pos:50% 22%" href="https://go.protonradio.com/r/rlcgv8zHjEOsQ" target="_blank" rel="noopener"><span class="n">04</span><div class="eq"><i></i><i></i><i></i><i></i><i></i></div><h3>Kari-Navo</h3><div class="play" data-es="<b>▶</b>ESCUCHAR"><b>▶</b>LISTEN</div></a>
+    </div>
+    <div class="platforms rv">
+      <span class="plabel" data-es="Sigue a NepruK en">Follow NepruK on</span>
+      <a class="btn" href="https://open.spotify.com/artist/3IpsO4tlNUpLPzbOs1FY8d" target="_blank" rel="noopener">Spotify ↗</a>
+      <a class="btn" href="https://music.apple.com/us/artist/nepruk/1460472911" target="_blank" rel="noopener">Apple Music ↗</a>
+      <a class="btn" href="https://youtube.com/@katerina_nepruk" target="_blank" rel="noopener">YouTube ↗</a>
+    </div>
+  </div>
+</section>
+
 <section id="projects">
   <div class="wrap">
-    <div class="label rv">B-sides</div>
-    <h2 class="rv">Side <span>projects</span></h2>
+    <div class="label rv" data-es="Lados B">B-sides</div>
+    <h2 class="rv" data-es="Proyectos <span>paralelos</span>">Side <span>projects</span></h2>
 
     <article class="project" id="sounds">
       <span class="pnum" aria-hidden="true">01</span>
       <div class="sou2">
         <div class="sou2-photo rv">
-          <img src="assets/photo-sunset.jpg" alt="NepruK in a flowing red ikat robe at sunset" loading="lazy" width="1400" height="1400">
+          <img src="assets/photo-sunset.jpg" alt="NepruK in a flowing red ikat robe at sunset" data-es-alt="NepruK con una túnica ikat roja al viento durante el atardecer" loading="lazy" width="1400" height="1400">
         </div>
         <div class="sou2-text">
-          <div class="ptag rv">Audiovisual project</div>
+          <div class="ptag rv" data-es="Proyecto audiovisual">Audiovisual project</div>
           <h3 class="pt rv">Sounds of <span>Uzbekistan</span></h3>
-          <p class="rv">Alongside solo performances, NepruK is the creator of “Sounds of Uzbekistan” — an audiovisual project transforming real sounds, locations and stories from Uzbekistan into modern electronic compositions and live performances.</p>
+          <p class="rv" data-es="Además de sus actuaciones en solitario, NepruK es la creadora de “Sounds of Uzbekistan”, un proyecto audiovisual que transforma sonidos, lugares e historias reales de Uzbekistán en composiciones electrónicas modernas y actuaciones en vivo.">Alongside solo performances, NepruK is the creator of “Sounds of Uzbekistan” — an audiovisual project transforming real sounds, locations and stories from Uzbekistan into modern electronic compositions and live performances.</p>
           <div class="plinks rv">
-            <a class="btn fill" href="https://youtu.be/_ZLjV7FdiRI" target="_blank" rel="noopener">▶ Watch the trailer</a>
-            <a class="btn" href="https://www.instagram.com/sounds_of_uzbekistan" target="_blank" rel="noopener">Instagram ↗</a>
+            <a class="btn fill" href="https://youtu.be/_ZLjV7FdiRI" target="_blank" rel="noopener" data-es="▶ Ver el tráiler">▶ Watch the trailer</a>
+            <div class="pgroup">
+              <span class="plabel" data-es="Escucha el EP">Listen to the EP</span>
+              <div class="prow">
+                <a class="btn sm" href="https://open.spotify.com/album/5GjwaeMHKGTLEU1HXzFvpq" target="_blank" rel="noopener">Spotify ↗</a>
+                <a class="btn sm" href="https://music.apple.com/us/album/sounds-of-uzbekistan-margilan-ep/1884335824" target="_blank" rel="noopener">Apple Music ↗</a>
+              </div>
+            </div>
+            <a class="tlink" href="https://www.instagram.com/sounds_of_uzbekistan" target="_blank" rel="noopener" data-es="Sigue el proyecto en Instagram ↗">Follow on Instagram ↗</a>
           </div>
         </div>
       </div>
@@ -339,67 +407,56 @@ footer b{color:var(--lime)}
     <article class="project" id="jams">
       <span class="pnum" aria-hidden="true">02</span>
       <div class="jams-text">
-        <div class="ptag rv">Music project</div>
+        <div class="ptag rv" data-es="Proyecto musical">Music project</div>
         <h3 class="pt rv">Jam’s <span>NepruK</span></h3>
-        <p class="rv">An original music project where I collaborate with musicians and artists who inspire me to create music together in real time.</p>
-        <p class="rv">Live improvisation, sonic experimentation, and genre fusion. Each jam is a unique musical creation, born in the moment.</p>
-        <div class="chips rv"><span>Live improvisation</span><span>Sonic experimentation</span><span>Genre fusion</span></div>
+        <p class="rv" data-es="Un proyecto musical original en el que colaboro con músicos y artistas que me inspiran para crear música juntos en tiempo real.">An original music project where I collaborate with musicians and artists who inspire me to create music together in real time.</p>
+        <p class="rv" data-es="Improvisación en vivo, experimentación sonora y fusión de géneros. Cada jam es una creación musical única, nacida en el momento.">Live improvisation, sonic experimentation, and genre fusion. Each jam is a unique musical creation, born in the moment.</p>
+        <div class="chips rv" data-es="<span>Improvisación en vivo</span><span>Experimentación sonora</span><span>Fusión de géneros</span>"><span>Live improvisation</span><span>Sonic experimentation</span><span>Genre fusion</span></div>
       </div>
     <div class="player rv">
       <div class="video">
-        <iframe id="jamFrame" src="https://www.youtube-nocookie.com/embed/KPsDCUH7uZ4?rel=0" title="Jam’s NepruK — video player" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe id="jamFrame" src="https://www.youtube-nocookie.com/embed/KPsDCUH7uZ4?rel=0" title="Jam’s NepruK — video player" data-es-title="Jam’s NepruK — reproductor de vídeo" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
-      <div class="vwrap"><div class="vlist" id="vlist" aria-label="Jam’s NepruK playlist"></div></div>
+      <div class="vwrap"><div class="vlist" id="vlist" aria-label="Jam’s NepruK playlist" data-es-aria-label="Lista de reproducción de Jam’s NepruK"></div></div>
     </div>
-    <p class="rv" style="margin-top:26px"><a class="btn" href="https://www.youtube.com/playlist?list=PLNmwpI-KEE-m2vcfAr6mtJfY2IxGSO0IE" target="_blank" rel="noopener">All jams on YouTube ↗</a></p>
+    <p class="rv" style="margin-top:26px"><a class="btn" href="https://www.youtube.com/playlist?list=PLNmwpI-KEE-m2vcfAr6mtJfY2IxGSO0IE" target="_blank" rel="noopener" data-es="Todos los jams en YouTube ↗">All jams on YouTube ↗</a></p>
     </article>
-  </div>
-</section>
-
-<section id="music">
-  <div class="wrap">
-    <div class="label rv">Music</div>
-    <h2 class="rv">Press <span>play</span></h2>
-    <div class="tracks">
-      <a class="track rv" style="--cover:url(assets/cover-techno-mahalla.jpg);--pos:50% 35%" href="https://band.link/syTeT" target="_blank" rel="noopener"><span class="n">01</span><div class="eq"><i></i><i></i><i></i><i></i><i></i></div><h3>Techno Mahalla</h3><div class="play"><b>▶</b>LISTEN</div></a>
-      <a class="track rv" style="--cover:url(assets/cover-call-of-the-universe.jpg);--pos:50% 40%" href="https://go.protonradio.com/r/rl3PMkz3DgzDI" target="_blank" rel="noopener"><span class="n">02</span><div class="eq"><i></i><i></i><i></i><i></i><i></i></div><h3>Call of the Universe</h3><div class="play"><b>▶</b>LISTEN</div></a>
-      <a class="track rv" style="--cover:url(assets/cover-tashkent-vibe.jpg);--pos:50% 8%" href="https://band.link/smyN0" target="_blank" rel="noopener"><span class="n">03</span><div class="eq"><i></i><i></i><i></i><i></i><i></i></div><h3>Tashkent Vibe</h3><div class="play"><b>▶</b>LISTEN</div></a>
-      <a class="track rv" style="--cover:url(assets/cover-kari-navo.jpg);--pos:50% 22%" href="https://go.protonradio.com/r/rlcgv8zHjEOsQ" target="_blank" rel="noopener"><span class="n">04</span><div class="eq"><i></i><i></i><i></i><i></i><i></i></div><h3>Kari-Navo</h3><div class="play"><b>▶</b>LISTEN</div></a>
-    </div>
   </div>
 </section>
 
 <section id="highlights">
   <div class="wrap">
-    <div class="label rv">Highlights</div>
-    <h2 class="rv">On the <span>record</span></h2>
+    <div class="label rv" data-es="Destacados">Highlights</div>
+    <h2 class="rv" data-es="Su <span>trayectoria</span>">On the <span>record</span></h2>
     <div class="hl">
-      <div class="rv" data-n="01">Creator and composer of “Sounds of Uzbekistan” audiovisual project</div>
-      <div class="rv" data-n="02">Co-founder of “NeoForMusic” label</div>
-      <div class="rv" data-n="03">Sadowsky artist &amp; ambassador</div>
-      <div class="rv" data-n="04">DR Strings artist &amp; ambassador</div>
-      <div class="rv" data-n="05">Rootz artist &amp; ambassador</div>
-      <div class="rv" data-n="06">Semi-finalist of Uzbekistan Got Talent</div>
+      <div class="rv" data-n="01" data-es="Creadora y compositora del proyecto audiovisual “Sounds of Uzbekistan”">Creator and composer of “Sounds of Uzbekistan” audiovisual project</div>
+      <div class="rv" data-n="02" data-es="Cofundadora del sello “NeoForMusic”">Co-founder of “NeoForMusic” label</div>
+      <div class="rv" data-n="03" data-es="Artista y embajadora de Sadowsky">Sadowsky artist &amp; ambassador</div>
+      <div class="rv" data-n="04" data-es="Artista y embajadora de DR Strings">DR Strings artist &amp; ambassador</div>
+      <div class="rv" data-n="05" data-es="Artista y embajadora de Rootz">Rootz artist &amp; ambassador</div>
+      <div class="rv" data-n="06" data-es="Semifinalista de Uzbekistan Got Talent">Semi-finalist of Uzbekistan Got Talent</div>
     </div>
   </div>
 </section>
 
 <section id="press">
   <div class="wrap">
-    <div class="label rv">Press &amp; partners</div>
-    <h2 class="rv">In the <span>spotlight</span></h2>
+    <div class="label rv" data-es="Prensa y colaboradores">Press &amp; partners</div>
+    <h2 class="rv" data-es="Bajo los <span>focos</span>">In the <span>spotlight</span></h2>
     <div class="press">
       <a class="pcard sad rv" href="https://www.sadowskybass.com/artists/detail/katerina-nepruk" target="_blank" rel="noopener">
-        <img src="assets/photo-black-suit.jpg" alt="NepruK with a Sadowsky bass" loading="lazy" width="1280" height="1923">
-        <div><small>Official Artist Profile</small><h3>Sadowsky Basses</h3><span>Visit profile ↗</span></div>
+        <img src="assets/photo-black-suit.jpg" alt="NepruK with a Sadowsky bass" data-es-alt="NepruK con un bajo Sadowsky" loading="lazy" width="1280" height="1923">
+        <span class="plogo"><img src="assets/logo-sadowsky.svg" alt="Sadowsky" width="283" height="116"></span>
+        <div><small data-es="Perfil oficial de artista">Official Artist Profile</small><h3>Sadowsky Basses</h3><span data-es="Ver perfil ↗">Visit profile ↗</span></div>
       </a>
       <a class="pcard rv" href="https://angrytrobairitz.substack.com/p/the-angry-trobairitz-w-katerina-nepruk" target="_blank" rel="noopener">
-        <img src="assets/photo-tashkent.jpg" alt="NepruK portrait in Tashkent" loading="lazy" width="1280" height="1240" style="object-position:40% 20%">
-        <div><small>Interview</small><h3>The Angry Trobairitz</h3><span>Read interview ↗</span></div>
+        <img src="assets/photo-tashkent.jpg" alt="NepruK portrait in Tashkent" data-es-alt="Retrato de NepruK en Tashkent" loading="lazy" width="1280" height="1240" style="object-position:40% 20%">
+        <div><small data-es="Entrevista">Interview</small><h3>The Angry Trobairitz</h3><span data-es="Leer entrevista ↗">Read interview ↗</span></div>
       </a>
       <a class="pcard rv" href="https://www.drstrings.com/product-page/katrina-nepruk" target="_blank" rel="noopener">
-        <img src="assets/photo-dr-strings.jpg" alt="NepruK with a pink mohawk playing a headless bass on a striped runway" loading="lazy" width="1280" height="960" style="object-position:18% 40%">
-        <div><small>Official Artist Profile</small><h3>DR Strings</h3><span>Visit profile ↗</span></div>
+        <img src="assets/photo-dr-strings.jpg" alt="NepruK with a pink mohawk playing a headless bass on a striped runway" data-es-alt="NepruK con cresta rosa tocando un bajo sin cabezal sobre una pista rayada" loading="lazy" width="1280" height="960" style="object-position:18% 40%">
+        <span class="plogo r"><img class="dr" src="assets/logo-dr-strings.png" alt="DR Strings" width="480" height="337"></span>
+        <div><small data-es="Perfil oficial de artista">Official Artist Profile</small><h3>DR Strings</h3><span data-es="Ver perfil ↗">Visit profile ↗</span></div>
       </a>
     </div>
   </div>
@@ -407,15 +464,15 @@ footer b{color:var(--lime)}
 
 <section id="booking">
   <div class="wrap">
-    <div class="label rv">Booking &amp; Live Shows</div>
-    <h2 class="rv">Book <span>2027</span></h2>
+    <div class="label rv" data-es="Booking y shows en vivo">Booking &amp; Live Shows</div>
+    <h2 class="rv" data-es="Contratación <span>2027</span>">Book <span>2027</span></h2>
     <div class="book">
-      <p class="rv">NepruK delivers an immersive live electronic performance blending bass guitar, bow, improvisation and ethnic influences.</p>
+      <p class="rv" data-es="NepruK ofrece una inmersiva performance electrónica en vivo que fusiona bajo eléctrico, arco, improvisación e influencias étnicas.">NepruK delivers an immersive live electronic performance blending bass guitar, bow, improvisation and ethnic influences.</p>
       <dl class="rv">
-        <div><dt>Format</dt><dd>Solo live act, optional visuals</dd></div>
-        <div><dt>Set duration</dt><dd>20–30 / 45–60 min</dd></div>
-        <div><dt>Technical</dt><dd>Own instruments and electronics. Sound and lighting required.</dd></div>
-        <div><dt>Booking 2027</dt><dd>Festivals, clubs, cultural events and special projects.</dd></div>
+        <div><dt data-es="Formato">Format</dt><dd data-es="Acto en solitario en vivo, con visuales opcionales">Solo live act, optional visuals</dd></div>
+        <div><dt data-es="Duración del set">Set duration</dt><dd>20–30 / 45–60 min</dd></div>
+        <div><dt data-es="Técnica">Technical</dt><dd data-es="Instrumentos y equipo electrónico propios. Se requiere sonido e iluminación.">Own instruments and electronics. Sound and lighting required.</dd></div>
+        <div><dt data-es="Contratación 2027">Booking 2027</dt><dd data-es="Festivales, clubes, eventos culturales y proyectos especiales.">Festivals, clubs, cultural events and special projects.</dd></div>
       </dl>
     </div>
   </div>
@@ -424,7 +481,7 @@ footer b{color:var(--lime)}
 <section id="contact">
   <div class="rings"><i></i><i></i><i></i></div>
   <div class="wrap">
-    <div class="label rv">Booking &amp; Collaborations</div>
+    <div class="label rv" data-es="Booking y colaboraciones">Booking &amp; Collaborations</div>
     <a class="mail rv" href="mailto:nepruk.booking@gmail.com">nepruk.booking@gmail.com</a>
     <div class="soc rv">
       <a href="https://www.instagram.com/katerina_nepruk" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg>Instagram</a>
@@ -434,7 +491,7 @@ footer b{color:var(--lime)}
 </section>
 
 <footer>
-  <div class="wrap"><span>NepruK / Live Electronic Artist</span><b>2027</b></div>
+  <div class="wrap"><span data-es="NepruK / Artista electrónica en vivo">NepruK / Live Electronic Artist</span><b>2027</b></div>
 </footer>
 
 <script>
@@ -463,6 +520,60 @@ footer b{color:var(--lime)}
   if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('on')});return}
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
   els.forEach(function(el,i){el.style.transitionDelay=(i%4)*70+'ms';io.observe(el)});
+})();
+
+(function(){
+  var KEY='nepruk-lang';
+  var ES={title:'NepruK — Artista electrónica en vivo de Asia Central',
+          desc:'NepruK es una artista electrónica en vivo de Asia Central que fusiona bajo eléctrico, texturas de arco, electrónica e influencias étnicas. Contratación 2027.',
+          ogt:'NepruK — Artista electrónica en vivo',
+          ogd:'Música electrónica en vivo que fusiona bajo eléctrico, texturas de arco e influencias étnicas.'};
+  function meta(sel){return document.querySelector(sel)}
+  var mDesc=meta('meta[name="description"]'),mOgT=meta('meta[property="og:title"]'),mOgD=meta('meta[property="og:description"]');
+  var EN={title:document.title,desc:mDesc&&mDesc.content,ogt:mOgT&&mOgT.content,ogd:mOgD&&mOgD.content};
+  var ATTRS=['alt','title','aria-label'];
+  var btns=document.querySelectorAll('.lang button');
+  function setLang(l,save){
+    var es=l==='es';
+    document.documentElement.lang=es?'es':'en';
+    document.querySelectorAll('[data-es]').forEach(function(el){
+      if(el.dataset.en===undefined)el.dataset.en=el.innerHTML;
+      el.innerHTML=es?el.getAttribute('data-es'):el.dataset.en;
+    });
+    ATTRS.forEach(function(a){
+      document.querySelectorAll('[data-es-'+a+']').forEach(function(el){
+        var k='data-en-'+a;
+        if(!el.hasAttribute(k))el.setAttribute(k,el.getAttribute(a)||'');
+        el.setAttribute(a,es?el.getAttribute('data-es-'+a):el.getAttribute(k));
+      });
+    });
+    var T=es?ES:EN;
+    document.title=T.title;
+    if(mDesc)mDesc.content=T.desc;
+    if(mOgT)mOgT.content=T.ogt;
+    if(mOgD)mOgD.content=T.ogd;
+    btns.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-lang')===l?'true':'false')});
+    if(save){try{localStorage.setItem(KEY,l)}catch(e){}}
+  }
+  function guess(){
+    var L=(navigator.languages&&navigator.languages.length)?navigator.languages:[navigator.language||'en'];
+    for(var i=0;i<L.length;i++){
+      var c=String(L[i]).toLowerCase().slice(0,2);
+      if(c==='es')return 'es';
+      if(c==='en')return 'en';
+    }
+    return 'en';
+  }
+  var start='en';
+  try{
+    var q=(new URLSearchParams(location.search).get('lang')||'').toLowerCase();
+    var st=localStorage.getItem(KEY);
+    if(q==='es'||q==='en')start=q;
+    else if(st==='es'||st==='en')start=st;
+    else start=guess();
+  }catch(e){}
+  if(start==='es')setLang('es',false);
+  btns.forEach(function(b){b.addEventListener('click',function(){setLang(b.getAttribute('data-lang'),true)})});
 })();
 </script>
 </body>
